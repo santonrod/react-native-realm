@@ -1,52 +1,33 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import HelloWorld from './components/Helloworld'
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload ,\n' +
-    'Shake or press menu button (⌘M) for dev menu',
-});
+import React, { Component } from 'react'
+import { View } from 'react-native'
+// import List from './app/components/List'
+// import Input from './app/components/Input'
+import Title from './app/components/Title'
 
 export default class App extends Component {
+  state = {
+    todos: ['Click to remove', 'Learn React Native', 'Write Code', 'Ship App']
+  }
+
+  onAddTodo = (text) => {
+    const {todos} = this.state
+    this.setState({
+      todos: [text, ...todos]
+    })
+  }
+
+  onRemoveTodo = (index) => {
+    const {todos} = this.state
+    this.setState({
+      todos: todos.filter((todo,i) => i !== index)
+    })
+  }
+
   render() {
     return (
-    <React.Fragment>
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+      <View>
+        <Title>To-Do List</Title>
       </View>
-      <HelloWorld />
-     </React.Fragment>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
