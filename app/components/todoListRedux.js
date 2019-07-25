@@ -1,4 +1,4 @@
-export const types = {
+const types = {
   ADD: 'ADD',
   REMOVE: 'REMOVE',
 }
