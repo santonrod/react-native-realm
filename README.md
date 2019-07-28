@@ -1,1 +1,1 @@
-# react-native-awesome-project
+# react-native-realm-project
